@@ -3,7 +3,7 @@ import torch.nn as tnn
 import numpy as np
 
 class VGG16(tnn.Module):
-    def __init__(self):
+    def __init__(self, num_classes):
         super(VGG16, self).__init__()
         self.layer1 = tnn.Sequential(
             # layer 1 (conv3-64)
@@ -76,8 +76,8 @@ class VGG16(tnn.Module):
             tnn.ReLU()
         )
         self.layer8 = tnn.Sequential(
-            tnn.Linear(4096, 228),
-            tnn.BatchNorm1d(228),
+            tnn.Linear(4096, num_classes),
+            tnn.BatchNorm1d(num_classes),
             # tnn.Softmax(dim=1)
         )
         
