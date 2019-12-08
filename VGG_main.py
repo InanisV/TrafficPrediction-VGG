@@ -21,7 +21,7 @@ BATCH_SIZE = 64
 LEARNING_RATE = 0.8
 EPOCH = 200
 
-file_path_v = '/home/winston/zhanzhengdao/smart_transportation/dataset/V_228.csv'
+file_path_v = 'dataset/V_228.csv'
 time_slot = 2 * 12 - 1
 predict_slot = 1
 
@@ -36,7 +36,7 @@ test_set = dataset(test_data_v, time_slot, predict_slot, BATCH_SIZE)
 train_loader = DataLoader(dataset=train_set, batch_size=BATCH_SIZE, shuffle=True)
 test_loader = DataLoader(dataset=test_set, batch_size=BATCH_SIZE, shuffle=True)
 
-vgg16 = VGG16()
+vgg16 = VGG16(num_classes=228)
 vgg16.to(device)
 
 # Loss and Optimizer
